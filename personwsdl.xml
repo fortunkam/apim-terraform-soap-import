@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="PersonRetriever" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+    <wsp:Policy wsu:Id="BasicHttpsBinding_IPersonRetriever_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken RequireClientCertificate="false" />
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict />
+                            </wsp:Policy>
+                        </sp:Layout>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://tempuri.org/Imports">
+            <xsd:import schemaLocation="https://wcf-app-app-site.azurewebsites.net/PersonRetriever.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+            <xsd:import schemaLocation="https://wcf-app-app-site.azurewebsites.net/PersonRetriever.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+            <xsd:import schemaLocation="https://wcf-app-app-site.azurewebsites.net/PersonRetriever.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PeopleService.Models" />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IPersonRetriever_GetPersonByName_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPersonByName" />
+    </wsdl:message>
+    <wsdl:message name="IPersonRetriever_GetPersonByName_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPersonByNameResponse" />
+    </wsdl:message>
+    <wsdl:message name="IPersonRetriever_GetPeople_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPeople" />
+    </wsdl:message>
+    <wsdl:message name="IPersonRetriever_GetPeople_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPeopleResponse" />
+    </wsdl:message>
+    <wsdl:message name="IPersonRetriever_GetPersonById_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPersonById" />
+    </wsdl:message>
+    <wsdl:message name="IPersonRetriever_GetPersonById_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPersonByIdResponse" />
+    </wsdl:message>
+    <wsdl:portType name="IPersonRetriever">
+        <wsdl:operation name="GetPersonByName">
+            <wsdl:input wsaw:Action="http://tempuri.org/IPersonRetriever/GetPersonByName" message="tns:IPersonRetriever_GetPersonByName_InputMessage" />
+            <wsdl:output wsaw:Action="http://tempuri.org/IPersonRetriever/GetPersonByNameResponse" message="tns:IPersonRetriever_GetPersonByName_OutputMessage" />
+        </wsdl:operation>
+        <wsdl:operation name="GetPeople">
+            <wsdl:input wsaw:Action="http://tempuri.org/IPersonRetriever/GetPeople" message="tns:IPersonRetriever_GetPeople_InputMessage" />
+            <wsdl:output wsaw:Action="http://tempuri.org/IPersonRetriever/GetPeopleResponse" message="tns:IPersonRetriever_GetPeople_OutputMessage" />
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonById">
+            <wsdl:input wsaw:Action="http://tempuri.org/IPersonRetriever/GetPersonById" message="tns:IPersonRetriever_GetPersonById_InputMessage" />
+            <wsdl:output wsaw:Action="http://tempuri.org/IPersonRetriever/GetPersonByIdResponse" message="tns:IPersonRetriever_GetPersonById_OutputMessage" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_IPersonRetriever" type="tns:IPersonRetriever">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="GetPersonByName">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPersonByName" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPeople">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPeople" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonById">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPersonById" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="BasicHttpsBinding_IPersonRetriever" type="tns:IPersonRetriever">
+        <wsp:PolicyReference URI="#BasicHttpsBinding_IPersonRetriever_policy" />
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="GetPersonByName">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPersonByName" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPeople">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPeople" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonById">
+            <soap:operation soapAction="http://tempuri.org/IPersonRetriever/GetPersonById" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PersonRetriever">
+        <wsdl:port name="BasicHttpBinding_IPersonRetriever" binding="tns:BasicHttpBinding_IPersonRetriever">
+            <soap:address location="http://wcf-app-app-site.azurewebsites.net/PersonRetriever.svc" />
+        </wsdl:port>
+        <wsdl:port name="BasicHttpsBinding_IPersonRetriever" binding="tns:BasicHttpsBinding_IPersonRetriever">
+            <soap:address location="https://wcf-app-app-site.azurewebsites.net/PersonRetriever.svc" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
