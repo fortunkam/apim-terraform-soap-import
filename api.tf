@@ -59,7 +59,7 @@ resource "azurerm_api_management_api" "person_wsdl_api" {
     }
   }
   depends_on = [
-    person_wsdl_link_api
+    azurerm_api_management_api.person_wsdl_link_api
   ]
 }
 
@@ -82,7 +82,7 @@ resource "azurerm_api_management_api" "person_wsdl_link_passthru_api" {
     }
   }
   depends_on = [
-    person_wsdl_api
+    azurerm_api_management_api.person_wsdl_api
   ]
 }
 
@@ -105,6 +105,6 @@ resource "azurerm_api_management_api" "person_wsdl_passthru_api" {
     }
   }
   depends_on = [
-    person_wsdl_link_passthru_api
+    azurerm_api_management_api.person_wsdl_link_passthru_api
   ]
 }
