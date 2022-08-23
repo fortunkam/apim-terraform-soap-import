@@ -66,7 +66,7 @@ resource "azurerm_api_management_api" "person_wsdl_link_passthru_api" {
   display_name        = "Person Retriever API (WSDLLINK PASSTHRU)"
   revision = "1"
   protocols           = ["https"]
-  path                = "person-wsdl-link"  
+  path                = "person-wsdl-link-passthru"  
   service_url         = "https://wcf-app-app-site.azurewebsites.net"
   soap_pass_through   = true
   import {
@@ -86,7 +86,7 @@ resource "azurerm_api_management_api" "person_wsdl_passthru_api" {
   display_name        = "Person Retriever API (WSDL PASSTHRU)"
   revision = "1"
   protocols           = ["https"]
-  path                = "person-wsdl"  
+  path                = "person-wsdl-passthru"  
   service_url         = "https://wcf-app-app-site.azurewebsites.net"
   soap_pass_through   = true
   import {
