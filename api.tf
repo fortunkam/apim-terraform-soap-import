@@ -38,6 +38,7 @@ resource "azurerm_api_management_api" "person_wsdl_link_api" {
       endpoint_name = "BasicHttpsBinding_IPersonRetriever"
     }
   }
+  
 }
 
 resource "azurerm_api_management_api" "person_wsdl_api" {
@@ -57,6 +58,9 @@ resource "azurerm_api_management_api" "person_wsdl_api" {
       endpoint_name = "BasicHttpsBinding_IPersonRetriever"
     }
   }
+  depends_on = [
+    person_wsdl_link_api
+  ]
 }
 
 resource "azurerm_api_management_api" "person_wsdl_link_passthru_api" {
@@ -77,6 +81,9 @@ resource "azurerm_api_management_api" "person_wsdl_link_passthru_api" {
       endpoint_name = "BasicHttpsBinding_IPersonRetriever"
     }
   }
+  depends_on = [
+    person_wsdl_api
+  ]
 }
 
 resource "azurerm_api_management_api" "person_wsdl_passthru_api" {
@@ -97,4 +104,7 @@ resource "azurerm_api_management_api" "person_wsdl_passthru_api" {
       endpoint_name = "BasicHttpsBinding_IPersonRetriever"
     }
   }
+  depends_on = [
+    person_wsdl_link_passthru_api
+  ]
 }
